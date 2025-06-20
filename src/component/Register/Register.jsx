@@ -28,6 +28,7 @@ function Register() {
       }
     } catch (error) {
       console.error("Error during registration:", error);
+      console.error(error.response.data.message);
     }
   }
 
