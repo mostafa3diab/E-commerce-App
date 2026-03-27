@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function AllProducts() {
   const [products, setProducts] = useState([]);
   const [showAll, setShowAll] = useState(false);
-  const [sortBy, setSortBy] = useState(""); // "name", "price", "rate"
+  const [sortBy, setSortBy] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
@@ -17,7 +17,6 @@ function AllProducts() {
 
   let { addProductToCart } = useContext(cartContext);
 
-  // Sorting function
   function getSortedProducts(products) {
     let sorted = [...products];
     if (sortBy) {
@@ -41,7 +40,6 @@ function AllProducts() {
     return sorted;
   }
 
-  // Search function
   function getFilteredProducts(products) {
     if (!searchTerm) return products;
     return products.filter((p) =>
@@ -63,7 +61,6 @@ function AllProducts() {
     }, 300);
   };
 
-  // Reset all filters and sorting
   function resetFilters() {
     setSearchTerm("");
     setSortBy("");
@@ -84,7 +81,6 @@ function AllProducts() {
     getProducts();
   }, []);
 
-  // Get filtered and sorted
   const filtered = getFilteredProducts(products);
   const sorted = getSortedProducts(filtered);
   const initialDisplay = sorted.slice(0, 8);
@@ -176,7 +172,6 @@ function AllProducts() {
                         className="w-100"
                       />
                     </div>
-                    {/* Wishlist & View icons */}
                     <div
                       className="d-flex justify-content-end gap-2 mb-2"
                       style={{ position: "absolute", top: 12, right: 16 }}
